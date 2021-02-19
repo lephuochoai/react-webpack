@@ -1,7 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
 
 const NODE_ENV = process.env.NODE_ENV || 'development'
@@ -11,7 +11,7 @@ module.exports = {
   devtool: IS_DEV ? 'source-map' : false,
   entry: path.resolve(__dirname, 'src'),
   output: {
-    filename: '[name].[fullhash].js',
+    filename: 'static/js/[name].[fullhash].js',
     chunkFilename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'build'),
     publicPath: '/'
@@ -68,13 +68,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', './index.html'),
       favicon: path.resolve(__dirname, 'public/favicon.ico')
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new MiniCssExtractPlugin({
-      filename: '[name][hash].css'
+      filename: 'static/css/[name][hash].css'
     }),
     new webpack.HotModuleReplacementPlugin()
   ],

@@ -1,19 +1,36 @@
 import Home from '@/pages/home'
 import Login from '@/pages/login'
+import Profile from '@/pages/profile'
 
 const routes = [
-  {
-    title: 'Login',
-    path: '/login',
-    exact: true,
-    component: Login
-  },
   {
     title: 'Home',
     path: '/',
     exact: true,
-    component: Home
+    component: Home,
+    loginRequired: false
+  },
+  {
+    title: 'Profile',
+    path: '/profile',
+    exact: true,
+    component: Profile,
+    loginRequired: true,
   }
 ]
 
-export default routes
+// Routes will rejected when logged
+const routesSpecialLogged = [
+  {
+    title: 'Login',
+    path: '/login',
+    exact: true,
+    component: Login,
+    loginRequired: false
+  }
+]
+
+export {
+  routes,
+  routesSpecialLogged
+}

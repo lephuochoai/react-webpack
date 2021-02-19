@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --open --mode development",
+    "start": "env-cmd -f .env webpack serve --open --mode development",
     "build:development": "rm -rf build && webpack --mode development",
     "build:staging": "rm -rf build && webpack --mode production",
     "build:production": "rm -rf build && webpack --mode production"
@@ -30,6 +30,8 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.2",
+    "dotenv-webpack": "^6.0.0",
+    "env-cmd": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.2.0",
