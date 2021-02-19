@@ -1,7 +1,8 @@
 {
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "node": true
   },
   // "plugins": ["react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
@@ -26,7 +27,7 @@
     ],
     "linebreak-style": [2, "unix"],
     "quotes": [2, "single"],
-    "semi": [2, "never"],
+    "semi": ["error", "never"],
     "curly": [2, "all"],
     "camelcase": [
       2,
@@ -42,5 +43,10 @@
   "globals": {
     "axios": true,
     "PropTypes": true
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": [["@/", "./src/"]]
+    }
   }
 }
