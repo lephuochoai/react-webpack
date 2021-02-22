@@ -15,6 +15,8 @@ import LocalStorage from '@/utils/storage'
 
 import '@/assets/styles/rootStyle.scss'
 
+import '@/locales/i18n'
+
 axiosClient.defaults.headers.common = {
   Authorization: LocalStorage.has('token') ? `Bearer ${LocalStorage.get('token')}` : ''
 }
