@@ -5,16 +5,16 @@ const accountSlice = createSlice({
   initialState: {
     token: '',
     accountInfo: {
-      name: '',
       email: '',
       firstName: '',
       lastName: '',
-      avatar: ''
     }
   },
   reducers: {
     login(state, action) {
-      state.push(action.payload)
+      const { token, accountInfo } = action.payload
+      state.accountInfo = token
+      state.accountInfo = accountInfo
     }
   }
 })

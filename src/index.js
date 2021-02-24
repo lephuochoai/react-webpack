@@ -3,19 +3,22 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import PropTypes from 'prop-types'
-
 import NotFound from '@/pages/not-found'
-
 import {routes, routesSpecialLogged} from '@/configs/routes'
 import Route from '@/configs/route'
 import store from '@/store'
-
 import axiosClient from '@/apis/axiosClient'
 import LocalStorage from '@/utils/storage'
+import { message } from 'antd'
 
-import '@/assets/styles/rootStyle.scss'
-
+import '@/assets/styles/root-style.scss'
+import '@/assets/styles/antd.less'
 import '@/locales/i18n'
+
+message.config({
+  top: 10,
+  maxCount: 3
+})
 
 axiosClient.defaults.headers.common = {
   Authorization: LocalStorage.has('token') ? `Bearer ${LocalStorage.get('token')}` : ''
