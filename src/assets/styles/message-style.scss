@@ -1,0 +1,37 @@
+.message__custom {
+  > .ant-message-notice-content {
+    min-width: 120px;
+  }
+
+  &-success {
+    .ant-message-notice-content {
+      background-color: #52c41a;
+      color: #ffffff;
+
+      .anticon {
+        display: none;
+      }
+    }
+  }
+
+  &-error {
+    .ant-message-notice-content {
+      background-color: #f5222d;
+      color: #ffffff;
+
+      .anticon {
+        display: none;
+      }
+    }
+  }
+
+  &-warning {
+    .ant-message-notice-content {
+      background-color: #fadb14;
+
+      .anticon {
+        display: none;
+      }
+    }
+  }
+}

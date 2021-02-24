@@ -1,3 +1,19 @@
 {
-  "hello": "Xin chào"
+  "hello": "Xin chào",
+  "login": "Đăng nhập",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "validation": {
+    "required": "Trường bắt buộc",
+    "email": "Email không hợp lệ",
+    "min": "Tối thiểu {{min}}",
+    "max": "Tối đa {{max}}",
+    "minLength": "Tối thiểu {{min}} kí tự",
+    "maxLength": "Tối đa {{max}} kí tự"
+  },
+  "error": {
+    "system_error": "Lỗi hệ thống",
+    "password_has_only_character_and_number": "Mật khẩu chỉ chứa chữ và số",
+    "email_or_password_is_incorrect": "Email hoặc mật khẩu không chính xác"
+  }
 }
