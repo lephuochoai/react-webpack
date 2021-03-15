@@ -1,16 +1,16 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-
 import PropTypes from 'prop-types'
+import { BoxContainer } from './Box.styles'
 
 function Box({ title='React Base', children }) {
   return (
-    <div>
+    <BoxContainer>
       <Helmet>
         <title>{title}</title>
       </Helmet>
       {children}
-    </div>
+    </BoxContainer>
   )
 }
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import Box from '@/components/box'
-import { Link } from 'react-router-dom'
+import Box from '@/components/box/Box'
 import { useTranslation } from 'react-i18next'
+import TitleHeader from '@/components/title-page/TitleHeader'
+import Container from '@/components/container/Container'
 
 function Home() {
   const { t, i18n } = useTranslation()
@@ -12,12 +13,11 @@ function Home() {
 
   return (
     <Box title="Home">
-      <Link to="/">{t('hello')}</Link>
-      <Link to="/login">Login</Link>
-      <div>
+      <TitleHeader />
+      <Container>
         <button onClick={() => onChangeLanguage('en')}>En</button>
         <button onClick={() => onChangeLanguage('vi')}>Vi</button>
-      </div>
+      </Container>
     </Box>
   )
 }

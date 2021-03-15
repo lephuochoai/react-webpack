@@ -3,6 +3,8 @@
   "login": "Đăng nhập",
   "email": "Email",
   "password": "Mật khẩu",
+  "vietnamese": "Tiếng việt",
+  "english": "English",
   "validation": {
     "required": "Trường bắt buộc",
     "email": "Email không hợp lệ",

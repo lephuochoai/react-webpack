@@ -3,6 +3,8 @@
   "login": "Login",
   "email": "Email",
   "password": "Password",
+  "vietnamese": "Tiếng Việt",
+  "english": "English",
   "validation": {
     "required": "Required field",
     "email": "Email is invalid",

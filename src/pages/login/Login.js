@@ -1,20 +1,19 @@
-import React from 'react'
-import Box from '@/components/box'
-import { Button, Input, Tooltip } from 'antd'
-import { BoxForm, StyleForm, Label } from './Login.styles'
-import { useTranslation } from 'react-i18next'
-import classNames from 'classnames'
-
-import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import yup from '@/utils/yup'
 import accountApis from '@/apis/accountApis'
-import { useDispatch } from 'react-redux'
+import { COLORS } from '@/commons/styles'
+import Box from '@/components/box/Box'
 import { login } from '@/store/slices/accountSlice'
-import Message from '@/components/message'
 import errorHelper from '@/utils/errorHelper'
 import LocalStorage from '@/utils/storage'
+import yup from '@/utils/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Button, Input, Tooltip } from 'antd'
+import classNames from 'classnames'
+import React from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { BoxForm, Label, StyleForm } from './Login.styles'
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -72,7 +71,7 @@ function Login() {
           <div className="login__form-detail">
             <div className="field">
               <Label>{t('email')}</Label>
-              <Tooltip color="#cf1322"
+              <Tooltip color={COLORS.COLOR_TOOLTIP_ERROR}
                 placement="top"
                 title={errors.email?.message}
               >
@@ -93,7 +92,7 @@ function Login() {
             <div className="field">
               <Label>{t('password')}</Label>
               <Tooltip
-                color="#cf1322"
+                color={COLORS.COLOR_TOOLTIP_ERROR}
                 placement="top"
                 title={errors.password?.message}
               >

@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require('dotenv-webpack')
 const webpack = require('webpack')
 
@@ -104,6 +105,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', './index.html'),
       favicon: path.resolve(__dirname, 'public/favicon.ico')
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public")
+        },
+      ],
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new MiniCssExtractPlugin({

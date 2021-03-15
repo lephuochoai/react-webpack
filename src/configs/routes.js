@@ -1,36 +1,55 @@
-import Home from '@/pages/home'
-import Login from '@/pages/login/Login'
-import Profile from '@/pages/profile'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import Route from '@/components/router-custom/route'
+import NotFound from '@/pages/not-found'
+import {routes, routesSpecialLogged} from '@/commons/routes'
+import LocalStorage from '@/utils/storage'
+import Header from '@/components/header/Header'
 
-const routes = [
-  {
-    title: 'Home',
-    path: '/',
-    exact: true,
-    component: Home,
-    loginRequired: false
-  },
-  {
-    title: 'Profile',
-    path: '/profile',
-    exact: true,
-    component: Profile,
-    loginRequired: true,
-  }
-]
+const ConditionRouter = ({ component: Component, condition, redirect, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => condition() ? <Component {...props} /> : <Redirect to={redirect} />}
+  />
+)
 
-// Routes will rejected when logged
-const routesSpecialLogged = [
-  {
-    title: 'Login',
-    path: '/login',
-    exact: true,
-    component: Login,
-    loginRequired: false
-  }
-]
-
-export {
-  routes,
-  routesSpecialLogged
+ConditionRouter.propTypes = {
+  component: PropTypes.elementType,
+  condition: PropTypes.func.isRequired,
+  redirect: PropTypes.string
 }
+
+const Routes = () => {
+  const renderAuthRoutes = () => (
+    <>
+      <Header />
+      <Switch>
+        {routes.map((router, i) => <Route key={i} {...router} />)}
+      </Switch>
+    </>
+  )
+
+  return (
+    <Router>
+      <Switch>
+        {routesSpecialLogged.map((router, i) => (
+          <ConditionRouter
+            {...router}
+            key={i} condition={() => !LocalStorage.has('token')}
+            redirect="/"
+          />
+        ))}
+
+        <ConditionRouter
+          component={renderAuthRoutes}
+          condition={() => LocalStorage.has('token')}
+          redirect="/login"
+        />
+        <Route path='*' exact component={NotFound} />
+      </Switch>
+    </Router>
+  )
+}
+
+export default Routes
